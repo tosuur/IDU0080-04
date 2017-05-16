@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.1 (branches/2.1-6728; 2011-02-03T14:14:58+0000) JAXWS-RI/2.2.3 JAXWS/2.2.-->
+<xs:schema version="1.0" targetNamespace="http://server.order.idu0080.ttu/"
+ xmlns:tns="http://server.order.idu0080.ttu/"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ >
+ 
+  <xs:element name="getAllOrders" type="tns:getAllOrders"/>
+  <xs:element name="getAllOrdersResponse" type="tns:getAllOrdersResponse"/>
+  <xs:element name="getOrdersByCustomerId" type="tns:getOrdersByCustomerId"/>
+  <xs:element name="getOrdersByCustomerIdResponse" type="tns:getOrdersByCustomerIdResponse"/>
+  <xs:element name="getOrdersByCustomerLastName" type="tns:getOrdersByCustomerLastName"/>
+  <xs:element name="getOrdersByCustomerLastNameResponse" type="tns:getOrdersByCustomerLastNameResponse"/>
+  <xs:element name="getOrdersByOrderId" type="tns:getOrdersByOrderId"/>
+  <xs:element name="getOrdersByOrderIdResponse" type="tns:getOrdersByOrderIdResponse"/>
+  <xs:element name="getOrdersByShippingAddress" type="tns:getOrdersByShippingAddress"/>
+  <xs:element name="getOrdersByShippingAddressResponse" type="tns:getOrdersByShippingAddressResponse"/>
+  
+  <xs:complexType name="getOrdersByShippingAddress">
+    <xs:sequence>
+      <xs:element name="country" type="xs:string" minOccurs="0"/>
+      <xs:element name="county" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="getOrdersByShippingAddressResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="order">
+    <xs:sequence>
+      <xs:element name="customer" type="tns:customer" minOccurs="0"/>
+      <xs:element name="order_id" type="xs:int"/>
+      <xs:element name="order_products" type="tns:orderProduct" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="price_total" type="xs:float"/>
+      <xs:element name="seller" type="tns:seller" minOccurs="0"/>
+      <xs:element name="shipping_address" type="tns:address" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="customer">
+    <xs:sequence>
+      <xs:element name="addresses" type="tns:address" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="customer" type="xs:int"/>
+      <xs:element name="first_name" type="xs:string" minOccurs="0"/>
+      <xs:element name="last_name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="address">
+    <xs:sequence>
+      <xs:element name="address" type="xs:int"/>
+      <xs:element name="country" type="xs:string" minOccurs="0"/>
+      <xs:element name="county" type="xs:string" minOccurs="0"/>
+      <xs:element name="street_address" type="xs:string" minOccurs="0"/>
+      <xs:element name="town_village" type="xs:string" minOccurs="0"/>
+      <xs:element name="zipcode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="orderProduct">
+    <xs:sequence>
+      <xs:element name="order_product" type="xs:int"/>
+      <xs:element name="price" type="xs:float"/>
+      <xs:element name="price_total" type="xs:float"/>
+      <xs:element name="product_count" type="xs:int"/>
+      <xs:element name="product_name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="seller">
+    <xs:sequence>
+      <xs:element name="addresses" type="tns:entAddress" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="enterprise" type="xs:int"/>
+      <xs:element name="name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="entAddress">
+    <xs:sequence>
+      <xs:element name="address" type="xs:int"/>
+      <xs:element name="country" type="xs:string" minOccurs="0"/>
+      <xs:element name="county" type="xs:string" minOccurs="0"/>
+      <xs:element name="street_address" type="xs:string" minOccurs="0"/>
+      <xs:element name="town_village" type="xs:string" minOccurs="0"/>
+      <xs:element name="zipcode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="getOrdersByOrderId">
+    <xs:sequence>
+      <xs:element name="order_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="getOrdersByOrderIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:order" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="getOrdersByCustomerLastName">
+    <xs:sequence>
+      <xs:element name="last_name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="getOrdersByCustomerLastNameResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="getOrdersByCustomerId">
+    <xs:sequence>
+      <xs:element name="customer_id" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="getOrdersByCustomerIdResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="getAllOrders">
+    <xs:sequence/>
+  </xs:complexType>
+  
+  <xs:complexType name="getAllOrdersResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2.1-1 (tags/2.2.1-1-7267; 2012-08-30T14:04:51+0000) JAXWS-RI/2.2.7 JAXWS/2.2 svn-revision#unknown.--><xs:schema version="1.0" targetNamespace="http://server.order.idu0080.ttu/" xmlns:tns="http://server.order.idu0080.ttu/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="getOrderShipmentsByOrderIdRyhmName" type="tns:getOrderShipmentsByOrderIdRyhmName"/>
+  <xs:element name="getOrderShipmentsByOrderIdRyhmNameResponse" type="tns:getOrderShipmentsByOrderIdRyhmNameResponse"/>
+  <xs:element name="insertOrderShipment" type="tns:insertOrderShipment"/>
+  <xs:element name="insertOrderShipmentResponse" type="tns:insertOrderShipmentResponse"/>
+  <xs:complexType name="insertOrderShipment">
+    <xs:sequence>
+      <xs:element name="order_id" type="xs:int"/>
+      <xs:element name="ryhm_name" type="xs:string" minOccurs="0"/>
+      <xs:element name="tracking_number" type="xs:string" minOccurs="0"/>
+      <xs:element name="courier_name" type="xs:string" minOccurs="0"/>
+      <xs:element name="approx_delivery_date" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="shipping_price" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertOrderShipmentResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getOrderShipmentsByOrderIdRyhmName">
+    <xs:sequence>
+      <xs:element name="order_id" type="xs:int"/>
+      <xs:element name="ryhm_name" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getOrderShipmentsByOrderIdRyhmNameResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:orderShipment" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="orderShipment">
+    <xs:sequence>
+      <xs:element name="approx_delivery_date" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="courier_name" type="xs:string" minOccurs="0"/>
+      <xs:element name="order" type="xs:int"/>
+      <xs:element name="order_shipment" type="xs:int"/>
+      <xs:element name="ryhm_name" type="xs:string" minOccurs="0"/>
+      <xs:element name="shipping_price" type="xs:double"/>
+      <xs:element name="tracking_number" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
