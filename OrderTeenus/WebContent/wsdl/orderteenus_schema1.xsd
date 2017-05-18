@@ -1,0 +1,35 @@
+<xs:schema xmlns:ns1="http://server.order.idu0080.ttu/" xmlns:tns="http://teenus.order.idu0080.ttu/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://teenus.order.idu0080.ttu/" version="1.0">
+
+  <xs:import namespace="http://server.order.idu0080.ttu/" schemaLocation="orderteenus_schema2.xsd"/>
+
+  <xs:element name="getCourierById" type="tns:getCourierById"/>
+
+  <xs:element name="getCourierByIdResponse" type="tns:getCourierByIdResponse"/>
+
+  <xs:element name="getCourierList" type="tns:getCourierList"/>
+
+  <xs:element name="getCourierListResponse" type="tns:getCourierListResponse"/>
+
+  <xs:complexType name="getCourierById">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCourierByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="ns1:courier"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCourierList">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getCourierListResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:courier"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

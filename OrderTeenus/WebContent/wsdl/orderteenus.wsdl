@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="OrderTeenusService" targetNamespace="http://teenus.order.idu0080.ttu/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://teenus.order.idu0080.ttu/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://teenus.order.idu0080.ttu/" schemaLocation="orderteenus_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="getCourierList">
+    <wsdl:part name="parameters" element="tns:getCourierList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCourierListResponse">
+    <wsdl:part name="parameters" element="tns:getCourierListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCourierByIdResponse">
+    <wsdl:part name="parameters" element="tns:getCourierByIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCourierById">
+    <wsdl:part name="parameters" element="tns:getCourierById">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CourierTeenus">
+    <wsdl:operation name="getCourierById">
+      <wsdl:input name="getCourierById" message="tns:getCourierById">
+    </wsdl:input>
+      <wsdl:output name="getCourierByIdResponse" message="tns:getCourierByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourierList">
+      <wsdl:input name="getCourierList" message="tns:getCourierList">
+    </wsdl:input>
+      <wsdl:output name="getCourierListResponse" message="tns:getCourierListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrderTeenusServiceSoapBinding" type="tns:CourierTeenus">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCourierById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCourierById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCourierByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourierList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCourierList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCourierListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrderTeenusService">
+    <wsdl:port name="OrderTeenusPort" binding="tns:OrderTeenusServiceSoapBinding">
+      <soap:address location="http://localhost:9090/OrderTeenusPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
