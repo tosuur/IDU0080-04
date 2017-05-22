@@ -45,6 +45,8 @@ public class Test {
 		System.out.println(parimCourier.getName() + "  |  " + parimPakkumine.getOfferId() + "  |  "
 				+ parimPakkumine.getPrice() + "  |  " + parimPakkumine.getDeliveryTime());
 		System.out.println("--------------------");
+		System.out.println("Tracking Number");
+		System.out.println(op.generateTrackingNumber(parimPakkumine.getOfferId()));
 	}
 
 }

@@ -44,6 +44,18 @@ public class OrderProtsess {
 			e.printStackTrace();
 		}
 		return offer;
-	} 
+	}
+	
+	public String generateTrackingNumber(String offerId) {
+		Teenus_OrderTeenusPort_Client CourierServiceTeenus = new Teenus_OrderTeenusPort_Client();
+		String trackingNumber = null;
+		try {
+			trackingNumber = CourierServiceTeenus.generateTrackingNumber(offerId);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return trackingNumber;
+	}
 
 }

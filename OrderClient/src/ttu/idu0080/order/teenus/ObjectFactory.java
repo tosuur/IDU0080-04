@@ -24,6 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _GenerateTrackingNumber_QNAME = new QName("http://teenus.order.idu0080.ttu/", "generateTrackingNumber");
+    private final static QName _GenerateTrackingNumberResponse_QNAME = new QName("http://teenus.order.idu0080.ttu/", "generateTrackingNumberResponse");
     private final static QName _GetCourierById_QNAME = new QName("http://teenus.order.idu0080.ttu/", "getCourierById");
     private final static QName _GetCourierByIdResponse_QNAME = new QName("http://teenus.order.idu0080.ttu/", "getCourierByIdResponse");
     private final static QName _GetCourierList_QNAME = new QName("http://teenus.order.idu0080.ttu/", "getCourierList");
@@ -36,6 +38,22 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link GenerateTrackingNumber }
+     * 
+     */
+    public GenerateTrackingNumber createGenerateTrackingNumber() {
+        return new GenerateTrackingNumber();
+    }
+
+    /**
+     * Create an instance of {@link GenerateTrackingNumberResponse }
+     * 
+     */
+    public GenerateTrackingNumberResponse createGenerateTrackingNumberResponse() {
+        return new GenerateTrackingNumberResponse();
     }
 
     /**
@@ -92,6 +110,24 @@ public class ObjectFactory {
      */
     public Pakkumine createPakkumine() {
         return new Pakkumine();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GenerateTrackingNumber }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://teenus.order.idu0080.ttu/", name = "generateTrackingNumber")
+    public JAXBElement<GenerateTrackingNumber> createGenerateTrackingNumber(GenerateTrackingNumber value) {
+        return new JAXBElement<GenerateTrackingNumber>(_GenerateTrackingNumber_QNAME, GenerateTrackingNumber.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GenerateTrackingNumberResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://teenus.order.idu0080.ttu/", name = "generateTrackingNumberResponse")
+    public JAXBElement<GenerateTrackingNumberResponse> createGenerateTrackingNumberResponse(GenerateTrackingNumberResponse value) {
+        return new JAXBElement<GenerateTrackingNumberResponse>(_GenerateTrackingNumberResponse_QNAME, GenerateTrackingNumberResponse.class, null, value);
     }
 
     /**
