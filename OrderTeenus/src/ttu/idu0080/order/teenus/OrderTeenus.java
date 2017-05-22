@@ -13,7 +13,7 @@ import ttu.idu0080.order.server.EntAddress;
 import ttu.idu0080.order.server.Order;
 
 @WebService(targetNamespace = "http://teenus.order.idu0080.ttu/", endpointInterface = "ttu.idu0080.order.teenus.Teenus", portName = "OrderTeenusPort", serviceName = "OrderTeenusService")
-public class OrderTeenus implements CourierTeenus, Teenus {
+public class OrderTeenus implements Teenus{
 	public List<Courier> getCourierList() {
 		CourierService_CourierServicePort_Client CourierServiceTeenus = new CourierService_CourierServicePort_Client();
 		List<Courier> CourierList = null;
@@ -38,12 +38,8 @@ public class OrderTeenus implements CourierTeenus, Teenus {
 		return Courier;
 	}
 	
-	public String orderTransport(String offerId, int courierId) {
-		Courier courier = getCourierById(courierId);
+	public String generateTrackingNumber(String offerId) {
 		String trackingNumber = offerId.toLowerCase().concat("#" + LocalDate.now());
-		
-		//insert order into table
-		
 		return trackingNumber;
 	}
 
