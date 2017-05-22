@@ -1,5 +1,6 @@
 package ttu.idu0080.order.teenus;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 
@@ -35,6 +36,15 @@ public class OrderTeenus implements CourierTeenus, Teenus {
 			e.printStackTrace();
 		}
 		return Courier;
+	}
+	
+	public String orderTransport(String offerId, int courierId) {
+		Courier courier = getCourierById(courierId);
+		String trackingNumber = offerId.toLowerCase().concat("#" + LocalDate.now());
+		
+		//insert order into table
+		
+		return trackingNumber;
 	}
 
 	public Pakkumine getOffer(int courierId, Order order) {
