@@ -29,7 +29,37 @@ public final class OrderService_OrderServicePort_Client {
 
     private static final QName SERVICE_NAME = new QName("http://server.order.idu0080.ttu/", "OrderServiceService");
 
-    private OrderService_OrderServicePort_Client() {
+    public OrderService_OrderServicePort_Client() {
+    }
+    
+    public Order getOrdersById(int id) throws Exception {
+    	URL wsdlURL = OrderServiceService.WSDL_LOCATION;
+    	String args[]={""};
+    	ttu.idu0080.order.server.Order _getOrdersById__return = null;
+        if (args.length > 0 && args[0] != null && !"".equals(args[0])) { 
+            File wsdlFile = new File(args[0]);
+            try {
+                if (wsdlFile.exists()) {
+                    wsdlURL = wsdlFile.toURI().toURL();
+                } else {
+                    //wsdlURL = new URL(args[0]);
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        }
+      
+        OrderServiceService ss = new OrderServiceService(wsdlURL, SERVICE_NAME);
+        OrderService port = ss.getOrderServicePort();  
+        
+        {
+            System.out.println("Invoking getCourierById...");
+            _getOrdersById__return = port.getOrdersByOrderId(id);
+            //System.out.println("getCourierById.result=" + _getCourierById__return);
+
+
+            }
+        return _getOrdersById__return;
     }
 
     public static void main(String args[]) throws java.lang.Exception {
