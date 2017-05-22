@@ -9,8 +9,16 @@
     <wsdl:part name="parameters" element="tns:getCourierList">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="generateTrackingNumberResponse">
+    <wsdl:part name="parameters" element="tns:generateTrackingNumberResponse">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getCourierListResponse">
     <wsdl:part name="parameters" element="tns:getCourierListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="generateTrackingNumber">
+    <wsdl:part name="parameters" element="tns:generateTrackingNumber">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getOffer">
@@ -42,6 +50,12 @@
       <wsdl:output name="getCourierListResponse" message="tns:getCourierListResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="generateTrackingNumber">
+      <wsdl:input name="generateTrackingNumber" message="tns:generateTrackingNumber">
+    </wsdl:input>
+      <wsdl:output name="generateTrackingNumberResponse" message="tns:generateTrackingNumberResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getOffer">
       <wsdl:input name="getOffer" message="tns:getOffer">
     </wsdl:input>
@@ -66,6 +80,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getCourierListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateTrackingNumber">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="generateTrackingNumber">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="generateTrackingNumberResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

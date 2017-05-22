@@ -87,9 +87,21 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="getAllCouriersResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:courier"/>
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="getCourierByIdResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:courier"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCourierById">
+    <xs:sequence>
+      <xs:element name="courier_id" type="xs:int"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -100,20 +112,8 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="getAllCouriersResponse">
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:courier"/>
-    </xs:sequence>
-  </xs:complexType>
-
   <xs:complexType name="getAllCouriers">
     <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="getCourierById">
-    <xs:sequence>
-      <xs:element name="courier_id" type="xs:int"/>
-    </xs:sequence>
   </xs:complexType>
 
 </xs:schema>

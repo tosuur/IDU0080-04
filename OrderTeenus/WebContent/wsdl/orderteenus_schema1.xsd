@@ -2,6 +2,10 @@
 
   <xs:import namespace="http://server.order.idu0080.ttu/" schemaLocation="orderteenus_schema2.xsd"/>
 
+  <xs:element name="generateTrackingNumber" type="tns:generateTrackingNumber"/>
+
+  <xs:element name="generateTrackingNumberResponse" type="tns:generateTrackingNumberResponse"/>
+
   <xs:element name="getCourierById" type="tns:getCourierById"/>
 
   <xs:element name="getCourierByIdResponse" type="tns:getCourierByIdResponse"/>
@@ -33,6 +37,18 @@
   <xs:complexType name="getCourierListResponse">
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:courier"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="generateTrackingNumber">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="generateTrackingNumberResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
