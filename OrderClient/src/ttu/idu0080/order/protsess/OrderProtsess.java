@@ -2,11 +2,11 @@ package ttu.idu0080.order.protsess;
 
 import java.util.List;
 
-import ttu.idu0080.order.offer.Pakkumine;
 import ttu.idu0080.order.server.Courier;
 import ttu.idu0080.order.server.Order;
 import ttu.idu0080.order.server.OrderService_OrderServicePort_Client;
-import ttu.idu0080.order.teenus.CourierTeenus_OrderTeenusPort_Client;
+import ttu.idu0080.order.teenus.Pakkumine;
+import ttu.idu0080.order.teenus.Teenus_OrderTeenusPort_Client;
 
 public class OrderProtsess {
 
@@ -23,7 +23,7 @@ public class OrderProtsess {
 	}
 	
 	public List<Courier> getCourierList() {
-		CourierTeenus_OrderTeenusPort_Client CourierServiceTeenus = new CourierTeenus_OrderTeenusPort_Client();
+		Teenus_OrderTeenusPort_Client CourierServiceTeenus = new Teenus_OrderTeenusPort_Client();
 		List<Courier> CourierList = null;
 		try {
 			CourierList = CourierServiceTeenus.getCouriers();
@@ -34,16 +34,16 @@ public class OrderProtsess {
 		return CourierList;
 	}
 
-	public Courier getBestOffer(Order order, List<Courier> couriers) {
-		OrderService_OrderServicePort_Client OrderServiceClient = new OrderService_OrderServicePort_Client();
+	public Pakkumine getBestOffer(int courierId, Order order) {
+		Teenus_OrderTeenusPort_Client CourierServiceTeenus = new Teenus_OrderTeenusPort_Client();
 		Pakkumine offer = null;
 		try {
-			//offer = OrderServiceClient.getOrdersById(id);
+			offer = CourierServiceTeenus.getOffer(courierId, order);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return offer;
 	} 
 
 }

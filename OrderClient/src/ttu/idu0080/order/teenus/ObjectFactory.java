@@ -28,6 +28,8 @@ public class ObjectFactory {
     private final static QName _GetCourierByIdResponse_QNAME = new QName("http://teenus.order.idu0080.ttu/", "getCourierByIdResponse");
     private final static QName _GetCourierList_QNAME = new QName("http://teenus.order.idu0080.ttu/", "getCourierList");
     private final static QName _GetCourierListResponse_QNAME = new QName("http://teenus.order.idu0080.ttu/", "getCourierListResponse");
+    private final static QName _GetOffer_QNAME = new QName("http://teenus.order.idu0080.ttu/", "getOffer");
+    private final static QName _GetOfferResponse_QNAME = new QName("http://teenus.order.idu0080.ttu/", "getOfferResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ttu.idu0080.order.teenus
@@ -69,6 +71,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetOffer }
+     * 
+     */
+    public GetOffer createGetOffer() {
+        return new GetOffer();
+    }
+
+    /**
+     * Create an instance of {@link GetOfferResponse }
+     * 
+     */
+    public GetOfferResponse createGetOfferResponse() {
+        return new GetOfferResponse();
+    }
+
+    /**
+     * Create an instance of {@link Pakkumine }
+     * 
+     */
+    public Pakkumine createPakkumine() {
+        return new Pakkumine();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetCourierById }{@code >}}
      * 
      */
@@ -102,6 +128,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://teenus.order.idu0080.ttu/", name = "getCourierListResponse")
     public JAXBElement<GetCourierListResponse> createGetCourierListResponse(GetCourierListResponse value) {
         return new JAXBElement<GetCourierListResponse>(_GetCourierListResponse_QNAME, GetCourierListResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetOffer }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://teenus.order.idu0080.ttu/", name = "getOffer")
+    public JAXBElement<GetOffer> createGetOffer(GetOffer value) {
+        return new JAXBElement<GetOffer>(_GetOffer_QNAME, GetOffer.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetOfferResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://teenus.order.idu0080.ttu/", name = "getOfferResponse")
+    public JAXBElement<GetOfferResponse> createGetOfferResponse(GetOfferResponse value) {
+        return new JAXBElement<GetOfferResponse>(_GetOfferResponse_QNAME, GetOfferResponse.class, null, value);
     }
 
 }
