@@ -1,7 +1,17 @@
 package ttu.idu0080.order.protsess;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.Duration;
+import javax.xml.datatype.XMLGregorianCalendar;
+
+import java.time.LocalDate;
 
 import ttu.idu0080.order.server.Courier;
 import ttu.idu0080.order.server.EntAddress;
@@ -46,7 +56,22 @@ public class Test {
 				+ parimPakkumine.getPrice() + "  |  " + parimPakkumine.getDeliveryTime());
 		System.out.println("--------------------");
 		System.out.println("Tracking Number");
-		System.out.println(op.generateTrackingNumber(parimPakkumine.getOfferId()));
+		String trackingNr = op.generateTrackingNumber(parimPakkumine.getOfferId());
+		System.out.println(trackingNr);
+
+		Date date = new Date();
+		System.out.println(date);
+		GregorianCalendar c = new GregorianCalendar();
+		c.setTime(date);
+		c.add(Calendar.DAY_OF_MONTH, parimPakkumine.getDeliveryTime());
+		try {
+			XMLGregorianCalendar date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+			op.insertShipment(order.getOrderId(), "1", trackingNr, parimCourier.getName(), date2,
+					parimPakkumine.getPrice() - order.getPriceTotal());
+		} catch (DatatypeConfigurationException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

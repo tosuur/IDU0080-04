@@ -5,6 +5,7 @@ import java.util.List;
 import ttu.idu0080.order.server.Courier;
 import ttu.idu0080.order.server.Order;
 import ttu.idu0080.order.server.OrderService_OrderServicePort_Client;
+import ttu.idu0080.order.server.OrderShipmentService_OrderShipmentServicePort_Client;
 import ttu.idu0080.order.teenus.Pakkumine;
 import ttu.idu0080.order.teenus.Teenus_OrderTeenusPort_Client;
 
@@ -56,6 +57,18 @@ public class OrderProtsess {
 			e.printStackTrace();
 		}
 		return trackingNumber;
+	}
+	
+	public void insertShipment(int orderId, java.lang.String ryhmName, java.lang.String trackingNumber,
+			java.lang.String courierName, javax.xml.datatype.XMLGregorianCalendar approxDeliveryDate,
+			double shippingPrice) {
+		OrderShipmentService_OrderShipmentServicePort_Client OrderShipmentService = new OrderShipmentService_OrderShipmentServicePort_Client();
+		try {
+			OrderShipmentService.insertShipment(orderId, ryhmName, trackingNumber, courierName, approxDeliveryDate, shippingPrice);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
