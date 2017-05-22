@@ -13,6 +13,14 @@
     <wsdl:part name="parameters" element="tns:getCourierListResponse">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getOffer">
+    <wsdl:part name="parameters" element="tns:getOffer">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOfferResponse">
+    <wsdl:part name="parameters" element="tns:getOfferResponse">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getCourierByIdResponse">
     <wsdl:part name="parameters" element="tns:getCourierByIdResponse">
     </wsdl:part>
@@ -21,7 +29,7 @@
     <wsdl:part name="parameters" element="tns:getCourierById">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:portType name="CourierTeenus">
+  <wsdl:portType name="Teenus">
     <wsdl:operation name="getCourierById">
       <wsdl:input name="getCourierById" message="tns:getCourierById">
     </wsdl:input>
@@ -34,8 +42,14 @@
       <wsdl:output name="getCourierListResponse" message="tns:getCourierListResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getOffer">
+      <wsdl:input name="getOffer" message="tns:getOffer">
+    </wsdl:input>
+      <wsdl:output name="getOfferResponse" message="tns:getOfferResponse">
+    </wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="OrderTeenusServiceSoapBinding" type="tns:CourierTeenus">
+  <wsdl:binding name="OrderTeenusServiceSoapBinding" type="tns:Teenus">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="getCourierById">
       <soap:operation soapAction="" style="document"/>
@@ -52,6 +66,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getCourierListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOffer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getOffer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOfferResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

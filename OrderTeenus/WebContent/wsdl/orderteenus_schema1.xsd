@@ -10,6 +10,10 @@
 
   <xs:element name="getCourierListResponse" type="tns:getCourierListResponse"/>
 
+  <xs:element name="getOffer" type="tns:getOffer"/>
+
+  <xs:element name="getOfferResponse" type="tns:getOfferResponse"/>
+
   <xs:complexType name="getCourierById">
     <xs:sequence>
       <xs:element name="arg0" type="xs:int"/>
@@ -29,6 +33,27 @@
   <xs:complexType name="getCourierListResponse">
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="ns1:courier"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOffer">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+      <xs:element minOccurs="0" name="arg1" type="ns1:order"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getOfferResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:pakkumine"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pakkumine">
+    <xs:sequence>
+      <xs:element name="deliveryTime" type="xs:int"/>
+      <xs:element minOccurs="0" name="offerId" type="xs:string"/>
+      <xs:element name="price" type="xs:float"/>
     </xs:sequence>
   </xs:complexType>
 

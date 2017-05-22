@@ -32,9 +32,64 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="getAllCouriersResponse">
+  <xs:complexType name="order">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="customer" type="tns:customer"/>
+      <xs:element name="order_id" type="xs:int"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="order_products" nillable="true" type="tns:orderProduct"/>
+      <xs:element name="price_total" type="xs:float"/>
+      <xs:element minOccurs="0" name="seller" type="tns:seller"/>
+      <xs:element minOccurs="0" name="shipping_address" type="tns:address"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="customer">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="addresses" nillable="true" type="tns:address"/>
+      <xs:element name="customer" type="xs:int"/>
+      <xs:element minOccurs="0" name="first_name" type="xs:string"/>
+      <xs:element minOccurs="0" name="last_name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="address">
+    <xs:sequence>
+      <xs:element name="address" type="xs:int"/>
+      <xs:element minOccurs="0" name="country" type="xs:string"/>
+      <xs:element minOccurs="0" name="county" type="xs:string"/>
+      <xs:element minOccurs="0" name="street_address" type="xs:string"/>
+      <xs:element minOccurs="0" name="town_village" type="xs:string"/>
+      <xs:element minOccurs="0" name="zipcode" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="orderProduct">
+    <xs:sequence>
+      <xs:element name="order_product" type="xs:int"/>
+      <xs:element name="price" type="xs:float"/>
+      <xs:element name="price_total" type="xs:float"/>
+      <xs:element name="product_count" type="xs:int"/>
+      <xs:element minOccurs="0" name="product_name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seller">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="addresses" nillable="true" type="tns:entAddress"/>
+      <xs:element name="enterprise" type="xs:int"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCouriersByAddressResponse">
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:courier"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCourierByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courier"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -45,26 +100,20 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="getCourierByIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:courier"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="getCouriersByAddressResponse">
+  <xs:complexType name="getAllCouriersResponse">
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:courier"/>
     </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllCouriers">
+    <xs:sequence/>
   </xs:complexType>
 
   <xs:complexType name="getCourierById">
     <xs:sequence>
       <xs:element name="courier_id" type="xs:int"/>
     </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="getAllCouriers">
-    <xs:sequence/>
   </xs:complexType>
 
 </xs:schema>
