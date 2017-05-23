@@ -39,6 +39,7 @@ public class CourierServiceService extends Service {
     public CourierServiceService(URL wsdlLocation) {
         super(wsdlLocation, SERVICE);
 		logg.WriteToFile("starting courierService");
+		logg.WriteToFile("starting offerService");
     }
 
     public CourierServiceService(URL wsdlLocation, QName serviceName) {
