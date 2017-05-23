@@ -18,9 +18,6 @@ public class Logger {
 				BufferedWriter bw = new BufferedWriter(fw);
 				PrintWriter out = new PrintWriter(bw)) {
 			out.println(args);
-			// more code
-			out.println(args + " 2");
-			// more code
 		} catch (IOException e) {
 			System.out.println(e);// exception handling left as an exercise for the reader
 		}

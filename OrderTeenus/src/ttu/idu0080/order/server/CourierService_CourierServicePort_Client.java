@@ -10,9 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.time.LocalDate;
 import java.util.logging.SimpleFormatter;
 
 import javax.xml.namespace.QName;
@@ -34,11 +32,15 @@ import javax.xml.ws.ResponseWrapper;
 public final class CourierService_CourierServicePort_Client {
 
     private static final QName SERVICE_NAME = new QName("http://server.order.idu0080.ttu/", "CourierServiceService");
-
-    public CourierService_CourierServicePort_Client() {  
+    ttu.idu0080.order.logid.Logger logg = new ttu.idu0080.order.logid.Logger("C://services_log.txt");
+    
+    public CourierService_CourierServicePort_Client() {
+    	logg.WriteToFile("starting courierService");
     }
     
     public java.util.List<Courier> getCouriers() throws Exception {
+    	
+    	logg.WriteToFile(LocalDate.now() + " - getting All Couriers");
     	
     	URL wsdlURL = CourierServiceService.WSDL_LOCATION;
     	String args[]={""};
