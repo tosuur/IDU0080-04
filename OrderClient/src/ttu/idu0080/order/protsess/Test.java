@@ -21,8 +21,12 @@ import ttu.idu0080.order.teenus.Pakkumine;
 public class Test {
 
 	public static void main(String[] args) {
+		ttu.idu0080.order.logid.Logger logger = new ttu.idu0080.order.logid.Logger("C://bprocess_log.txt");
+		logger.WriteToFile(LocalDate.now() + " protsessi algus");
+		logger.WriteToFile("---------------------------------------------------");
 		OrderProtsess op = new OrderProtsess();
 		Order order = op.getOrderById(1);
+		logger.WriteToFile("order_id: " + order.getOrderId() + " order price: " + order.getPriceTotal());
 		System.out.println(order.getPriceTotal());
 		System.out.println("---------------");
 		List<Courier> couriers = op.getCourierList();
@@ -32,23 +36,31 @@ public class Test {
 			// System.out.println(courier.getName() + " - percent: "+
 			// courier.getPercentFromOrder());
 		}
+		logger.WriteToFile("received " + pakkumised.size() + " offers");
+		logger.WriteToFile("--------------------------------------");
 		// Courier courier = op.getBestOffer(order, order);
 		// System.out.println("Best: " + courier.getName() + " - percent: "+
 		// courier.getPercentFromOrder());
 		float headus = (float) ((pakkumised.get(0).getPrice() - order.getPriceTotal()) * 0.01
 				* pakkumised.get(0).getDeliveryTime());
+		float pakkumiseHeadus = 0;
 		Pakkumine parimPakkumine = pakkumised.get(0);
 		Courier parimCourier = couriers.get(0);
-		for (Courier courier : couriers) {
-			for (Pakkumine pakkumine : pakkumised) {
-				if ((float) ((pakkumine.getPrice() - order.getPriceTotal()) * 0.01
-						* pakkumine.getDeliveryTime()) < headus) {
-					headus = (float) ((pakkumine.getPrice() - order.getPriceTotal()) * 0.01
-							* pakkumine.getDeliveryTime());
-					parimPakkumine = pakkumine;
-					parimCourier = courier;
-				}
+		for (int i = 0; i < pakkumised.size(); i++) {
+			if ((float) ((pakkumised.get(i).getPrice() - order.getPriceTotal()) * 0.01
+					* pakkumised.get(i).getDeliveryTime()) < headus) {
+				headus = (float) ((pakkumised.get(i).getPrice() - order.getPriceTotal()) * 0.01
+						* pakkumised.get(i).getDeliveryTime());
+				parimPakkumine = pakkumised.get(i);
+				parimCourier = couriers.get(i);
 			}
+			pakkumiseHeadus = (float) ((pakkumised.get(i).getPrice() - order.getPriceTotal()) * 0.01
+					* pakkumised.get(i).getDeliveryTime());
+			LocalDate date = LocalDate.now();
+			date = date.plusDays(pakkumised.get(i).getDeliveryTime());
+			logger.WriteToFile("rank: [" + pakkumiseHeadus + "] Courier: [" + couriers.get(i).getName()
+					+ "] Transport offer price: [" + (pakkumised.get(i).getPrice() - order.getPriceTotal())
+					+ "] days: [" + pakkumised.get(i).getDeliveryTime() + "] approximate delivery date:[" + date + "]");
 		}
 		System.out.println("--------------------");
 		System.out.println("Parim Pakkumine");
@@ -64,6 +76,16 @@ public class Test {
 		GregorianCalendar c = new GregorianCalendar();
 		c.setTime(date);
 		c.add(Calendar.DAY_OF_MONTH, parimPakkumine.getDeliveryTime());
+
+		logger.WriteToFile("--------------------------------------");
+		logger.WriteToFile(
+				"Selected offer: courier: [" + parimCourier.getName() + "] offer id: [" + parimPakkumine.getOfferId()
+						+ "] offer price: [" + (parimPakkumine.getPrice() - order.getPriceTotal()) + "]");
+		logger.WriteToFile("Tracking number: " + trackingNr);
+		logger.WriteToFile("OrderShipment id: " + order.getOrderId());
+		logger.WriteToFile(LocalDate.now() + " protsessi lopp");
+		logger.WriteToFile("---------------------------------------------------");
+
 		try {
 			XMLGregorianCalendar date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
 			op.insertShipment(order.getOrderId(), "1", trackingNr, parimCourier.getName(), date2,
