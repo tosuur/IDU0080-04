@@ -1,0 +1,4 @@
+May 23, 2017 4:03:39 PM ttu.idu0080.order.protsess.FileWriteTest main
+INFO: My first log
+May 23, 2017 4:03:39 PM ttu.idu0080.order.protsess.FileWriteTest main
+INFO: Hi How r u?
