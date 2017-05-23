@@ -7,8 +7,14 @@ package ttu.idu0080.order.server;
  */
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
 import javax.xml.namespace.QName;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -29,10 +35,11 @@ public final class CourierService_CourierServicePort_Client {
 
     private static final QName SERVICE_NAME = new QName("http://server.order.idu0080.ttu/", "CourierServiceService");
 
-    public CourierService_CourierServicePort_Client() {
+    public CourierService_CourierServicePort_Client() {  
     }
     
     public java.util.List<Courier> getCouriers() throws Exception {
+    	
     	URL wsdlURL = CourierServiceService.WSDL_LOCATION;
     	String args[]={""};
     	java.util.List<ttu.idu0080.order.server.Courier> _getAllCouriers__return = null;
