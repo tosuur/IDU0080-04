@@ -38,7 +38,8 @@ public final class CourierService_CourierServicePort_Client {
 
 	public java.util.List<Courier> getCouriers() throws Exception {
 
-		logg.WriteToFile(LocalDate.now() + " - getting All Couriers");
+		logg.WriteToFile("-----------------------------------");
+		logg.WriteToFile(LocalDate.now() + "  Courierservice starts");
 
 		URL wsdlURL = CourierServiceService.WSDL_LOCATION;
 		String args[] = { "" };
@@ -63,6 +64,11 @@ public final class CourierService_CourierServicePort_Client {
 			System.out.println("Invoking getAllCouriers...");
 			_getAllCouriers__return = port.getAllCouriers();
 		}
+		for (Courier c : _getAllCouriers__return){
+			logg.WriteToFile("Courier: [" + c.getName() +"]");
+		}
+		logg.WriteToFile(LocalDate.now() + "  Courierservice ends");
+		logg.WriteToFile("-----------------------------------");
 		return _getAllCouriers__return;
 	}
 
@@ -93,7 +99,6 @@ public final class CourierService_CourierServicePort_Client {
 			// _getCourierById__return);
 
 		}
-    	logg.WriteToFile(LocalDate.now() + " - getting courier:" + _getCourierById__return.name);
 		return _getCourierById__return;
 	}
 
