@@ -18,6 +18,7 @@ import javax.xml.ws.Service;
                   wsdlLocation = "http://localhost:8080/OrderServer/services/CourierServicePort?wsdl",
                   targetNamespace = "http://server.order.idu0080.ttu/") 
 public class CourierServiceService extends Service {
+	ttu.idu0080.order.logid.Logger logg = new ttu.idu0080.order.logid.Logger("C://services_log.txt");
 
     public final static URL WSDL_LOCATION;
 
@@ -37,6 +38,7 @@ public class CourierServiceService extends Service {
 
     public CourierServiceService(URL wsdlLocation) {
         super(wsdlLocation, SERVICE);
+		logg.WriteToFile("starting courierService");
     }
 
     public CourierServiceService(URL wsdlLocation, QName serviceName) {
